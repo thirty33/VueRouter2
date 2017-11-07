@@ -13,7 +13,7 @@ import Noencontrado from '@/components/Noencontrado'
 Vue.use(Router)
 
 export default new Router({
-	// modo histotiria, quitar #
+	// modo historia, quitar #
  	mode: 'history',		
   routes: [
     {
@@ -29,7 +29,7 @@ export default new Router({
     // 	props: true,
     // }, 
     // Boolean mode
-    {
+    {   // rute guard
         beforeEnter: ((to,from,next) => {
             if(store.state.auth){
 

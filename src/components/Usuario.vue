@@ -20,6 +20,26 @@
 
 <script>
 	export default {
+		beforeRouteEnter (to,from,next) {
+			console.log('antes de entrar')
+			next((vm) => console.log(vm))
+		},
+		beforeRouteUpdate (to,from,next) {
+			console.log('antes de cambiar la ruta sobre el mismo componente')
+			this.id = to.params.id
+			next()
+		},
+		beforeRouteLeave (to,from,next) {
+			// antes de salir del componente
+			// console.info('antes de salir')
+			const answer = window.confirm('Do really want lo leave? you have unsaved changes')
+			if(answer){
+				next()
+			}else {
+				next(false)
+			}
+			// next()
+		},
 		data(){
 			return {
 				// no confundir router con route
@@ -31,7 +51,9 @@
 			'$route'(to) {
 				this.id = to.$route.params.id
 			}
-		}
+		},
+		// Guards a nivel de componente
+
 	}
 </script>
 
