@@ -12,7 +12,12 @@ Vue.config.productionTip = false
 router.beforeEach((to, from, next) => {
 	console.log('acceso global a ruta')
 	// next(store.state.auth)
-	next()
+	if(to.meta.privado){
+		next(store.state.auth)
+	}
+	else{
+		next()
+	}
 })
 
 /* eslint-disable no-new */

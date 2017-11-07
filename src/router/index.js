@@ -38,6 +38,7 @@ export default new Router({
             next(store.state.auth)
         }),
     	path: '/contacto/',
+        meta: {privado:true},
     	name: 'contacto',
     	component: Contacto,
     	// sin hacer referecia a $route
