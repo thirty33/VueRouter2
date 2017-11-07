@@ -8,7 +8,7 @@ import {store} from './store'
 Vue.config.productionTip = false
 
 
-// global guards 
+// global guards, vuex y vue routes 
 router.beforeEach((to, from, next) => {
 	console.log('acceso a ruta')
 	next(store.state.auth)
