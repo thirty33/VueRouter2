@@ -10,8 +10,9 @@ Vue.config.productionTip = false
 
 // global guards, vuex y vue routes 
 router.beforeEach((to, from, next) => {
-	console.log('acceso a ruta')
-	next(store.state.auth)
+	console.log('acceso global a ruta')
+	// next(store.state.auth)
+	next()
 })
 
 /* eslint-disable no-new */

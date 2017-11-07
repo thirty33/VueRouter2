@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import {store} from '../store'
 
 import Home from '@/components/Home'
 import Contacto from '@/components/Contacto'
@@ -29,6 +30,13 @@ export default new Router({
     // }, 
     // Boolean mode
     {
+        beforeEnter: ((to,from,next) => {
+            if(store.state.auth){
+
+            console.log('Acceso a ruta contacto')
+            }else console.log('no tiene acceso')
+            next(store.state.auth)
+        }),
     	path: '/contacto/',
     	name: 'contacto',
     	component: Contacto,
