@@ -9,7 +9,17 @@ import Usuariofotos from '@/components/UsuarioFotos'
 import Equipo from '@/components/Equipo'
 import Usuario from '@/components/Usuario'
 import Noencontrado from '@/components/Noencontrado'
-import bio from '@/components/bio'
+// import bio from '@/components/bio'
+// Usando lazy load 
+
+
+// El componente bio tiene su propio bundle, de manera asincrona
+const bio = resolve => {
+    require.ensure(['@/components/bio'], () => {
+        resolve(require('@/components/bio'))
+    })
+}
+
 import info from '@/components/info'
 
 
