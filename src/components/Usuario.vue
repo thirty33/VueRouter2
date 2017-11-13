@@ -13,6 +13,8 @@
 
 		<router-link :to="{name: 'bio', params: {id: id}}">ve mis bio</router-link> -->
 
+		<pre v-text="username"></pre>
+
 		<router-view></router-view>
 	</section>
 </template>
@@ -20,6 +22,25 @@
 
 <script>
 	export default {
+		data(){
+			return {
+				// no confundir router con route
+				id: this.$route.params.id,
+				username: null
+			}
+		},
+		created() {
+			this.obtenerUsername()
+		},
+		methods: {
+			obtenerUsername() {
+				// Simulando fetching
+				setTimeout( () => {
+
+					this.username = this.$route.params.id + Math.floor(Math.random() * 1000)
+				},2000)
+			}
+		},
 		beforeRouteEnter (to,from,next) {
 			console.log('antes de entrar')
 			next((vm) => console.log(vm))
@@ -40,17 +61,13 @@
 			}
 			// next()
 		},
-		data(){
-			return {
-				// no confundir router con route
-				id: this.$route.params.id
-			}
-		},
 		watch: {
 			// Reactividad en las rutas
 			'$route'(to) {
 				this.id = to.$route.params.id
-			}
+				// observando cambios 
+				this.obtenerUsername()
+			},
 		},
 		// Guards a nivel de componente
 
