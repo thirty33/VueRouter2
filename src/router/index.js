@@ -9,12 +9,25 @@ import Usuariofotos from '@/components/UsuarioFotos'
 import Equipo from '@/components/Equipo'
 import Usuario from '@/components/Usuario'
 import Noencontrado from '@/components/Noencontrado'
+import bio from '@/components/bio'
+import info from '@/components/info'
+
+
 
 Vue.use(Router)
 
 export default new Router({
 	// modo historia, quitar #
- 	mode: 'history',		
+ 	mode: 'history',
+    scrollBehavior(to, from, savedPosition) {
+        const position = {}
+        console.log(to)
+        if(to.hash) {
+            position.selector = to.hash
+        }
+
+        return position
+    },		
   routes: [
     {
       path: '/',
@@ -61,6 +74,16 @@ export default new Router({
 
     	],
     	
+    },
+    {
+        path: '/bio',
+        component: bio,
+        name: 'bio'
+    },
+    {
+        path: '/info',
+        component: info,
+        name: 'info'
     },
     {
     	path: '*',
