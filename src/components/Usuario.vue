@@ -30,11 +30,12 @@
 			}
 		},
 		created() {
+			// data fetching after navigation
 			this.obtenerUsername()
 		},
 		methods: {
 			obtenerUsername() {
-				// Simulando fetching
+				// Simulando fetching, after navigation
 				setTimeout( () => {
 
 					this.username = this.$route.params.id + Math.floor(Math.random() * 1000)
@@ -62,7 +63,7 @@
 			// next()
 		},
 		watch: {
-			// Reactividad en las rutas
+			// Reactividad en las rutas, after naigation
 			'$route'(to) {
 				this.id = to.$route.params.id
 				// observando cambios 
